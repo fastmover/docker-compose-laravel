@@ -12,6 +12,8 @@ services:
 
   nginx-app:
     image: nginx
+    ports:
+      - "80:80"
     links:
       - phpfpm
       - db
