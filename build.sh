@@ -5,8 +5,10 @@
 # "nginx-app" containers "33:33" ("$ id www-data" from both containers).
 #
 # http://stackoverflow.com/a/29251160/2141119
-chown -R 33:33 app
-chmod -R g+rwx app
+# chown -R 33:33 app
+# chmod -R g+rwx app
+
+docker network create nginx-proxy
 
 docker-compose up -d --force-recreate
 
@@ -17,4 +19,3 @@ docker-compose exec phpfpm php artisan key:generate
 # (which basically has the same requirements as a Laravel application). We will
 # delegate the "phpfpm" container using this script for now.
 docker-compose exec phpfpm php artisan migrate --force
-

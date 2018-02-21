@@ -1,4 +1,4 @@
-FROM php:7.0.26-alpine
+FROM php:7.2.2
 
 RUN apk --no-cache add curl git subversion openssh openssl mercurial tini bash zlib-dev
 
@@ -24,7 +24,7 @@ RUN curl -s -f -L -o /tmp/installer.php https://raw.githubusercontent.com/compos
  && composer --ansi --version --no-interaction \
  && rm -rf /tmp/* /tmp/.htaccess
 
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+COPY .docker/images/composer/docker-entrypoint.sh /docker-entrypoint.sh
 
 WORKDIR /app
 
